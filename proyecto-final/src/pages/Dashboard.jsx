@@ -1,3 +1,4 @@
+// dashboard
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -47,7 +48,11 @@ const Dashboard = () => {
           products.map((product) => (
             <div key={product._id} className="product-card">
               <img
-                src={product.imageUrl}
+                src={
+                  product.imageUrl.startsWith("http")
+                    ? product.imageUrl
+                    : `http://localhost:3000${product.imageUrl}`
+                }
                 alt={product.name}
                 className="product-image"
               />
