@@ -1,9 +1,12 @@
-/* 🔥 Asegurar que `html` y `body` ocupen toda la pantalla */
+/* 🔥 Asegurar que `html` y `body` ocupen toda la pantalla sin desbordar */
 html,
 body {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    /* Evita desplazamiento horizontal al hacer zoom */
     background-color: #1a1a1a;
     /* Fondo oscuro */
 }
@@ -11,25 +14,28 @@ body {
 /* 🔥 Contenedor principal del Dashboard */
 .dashboard-container {
     min-height: 100vh;
-    /* Ocupar toda la pantalla */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* Asegura que el contenido no se mueva */
     padding: 20px;
     text-align: center;
     background-color: #1a1a1a;
+    width: 100%;
 }
 
-/* 🔥 Estilo para el título "GYM SHOP" */
+/* 🔥 Estilo para el título "GYM SHOP" con ajuste automático al zoom */
 .gym-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    /* Ajusta el tamaño dinámicamente */
     font-style: italic;
     font-weight: bold;
     color: #ff4d4d;
     text-shadow: 3px 3px 5px rgba(255, 0, 0, 0.5);
     margin-bottom: 20px;
+    text-align: center;
+    white-space: nowrap;
+    /* Evita que el texto se divida en varias líneas */
 }
 
 /* 🔥 Botón de Cerrar Sesión */
@@ -62,13 +68,14 @@ body {
 /* 🔥 Lista de productos */
 .product-list {
     flex-grow: 1;
-    /* Hace que la lista de productos crezca */
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 1200px;
+    /* Evita que los productos se expandan demasiado */
     padding: 20px;
     background-color: #1a1a1a;
 }
@@ -151,7 +158,7 @@ body {
     }
 
     .gym-title {
-        font-size: 2.5rem;
-        /* Reducir tamaño en móviles */
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        /* Ajusta tamaño en móviles */
     }
 }
