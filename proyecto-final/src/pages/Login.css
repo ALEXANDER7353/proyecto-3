@@ -1,27 +1,91 @@
+/* 🔥 Variables de colores globales */
+:root {
+    --background-color: #1a1a1a;
+    /* Fondo oscuro */
+    --text-color: #ffffff;
+    /* Texto blanco */
+    --input-text-color: #ffffff;
+    /* Texto en inputs */
+    --input-bg-color: #333333;
+    /* Fondo de inputs */
+    --input-border-color: #ff0000;
+    /* Borde de inputs */
+    --button-bg-color: #ff0000;
+    /* Fondo de botones */
+    --button-text-color: #ffffff;
+    /* Texto de botones */
+}
+
+/* 🔥 Asegurar que `html` y `body` ocupen toda la pantalla */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🔥 Contenedor principal para Login y Dashboard */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+/* 🔥 Estilo para el título principal (Login & Dashboard) */
+.title {
+    font-size: 3rem;
+    font-style: italic;
+    font-weight: bold;
+    color: #ff4d4d;
+    text-shadow: 3px 3px 5px rgba(255, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* 🔥 Estilos del Login */
 .login-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(255, 0, 0, 0.2);
 }
 
+/* 🔥 Formulario en el Login */
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    width: 100%;
 }
 
+/* 🔥 Inputs (Login) */
 input {
     padding: 10px;
     font-size: 16px;
     color: var(--input-text-color);
     background-color: var(--input-bg-color);
-    border: 1px solid var(--input-border-color);
+    border: 2px solid var(--input-border-color);
+    border-radius: 5px;
+    width: 100%;
 }
 
+/* 🔥 Botón principal (Login y Dashboard) */
 button {
     padding: 10px;
     font-size: 16px;
@@ -29,8 +93,117 @@ button {
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     border: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
 }
 
-.night-mode label {
-    color: white;
+button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* 🔥 Contenedor del Dashboard */
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+/* 🔥 Botón de Cerrar Sesión */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* 🔥 Lista de productos en el Dashboard */
+.product-list {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* 🔥 Tarjeta de producto */
+.product-card {
+    border: 2px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    width: 220px;
+    text-align: center;
+    background: linear-gradient(145deg, #222, #111);
+    box-shadow: 4px 4px 10px rgba(255, 0, 0, 0.2);
+    color: #fff;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* 🔥 Imagen del producto */
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid var(--button-bg-color);
+}
+
+/* 🔥 Nombre del producto */
+.product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ff4d4d;
+}
+
+/* 🔥 Precio del producto */
+.product-price {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* 🔥 Responsive: Ajuste para móviles */
+@media (max-width: 768px) {
+    .product-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 90%;
+    }
+
+    .logout-button {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
 }
