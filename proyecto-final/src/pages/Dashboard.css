@@ -1,21 +1,157 @@
+/* 🔥 Asegurar que `html` y `body` ocupen toda la pantalla */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #1a1a1a;
+    /* Fondo oscuro */
+}
+
+/* 🔥 Contenedor principal del Dashboard */
+.dashboard-container {
+    min-height: 100vh;
+    /* Ocupar toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Asegura que el contenido no se mueva */
+    padding: 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+}
+
+/* 🔥 Estilo para el título "GYM SHOP" */
+.gym-title {
+    font-size: 3rem;
+    font-style: italic;
+    font-weight: bold;
+    color: #ff4d4d;
+    text-shadow: 3px 3px 5px rgba(255, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* 🔥 Botón de Cerrar Sesión */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* 🔥 Mensajes de error */
+.error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 🔥 Lista de productos */
 .product-list {
+    flex-grow: 1;
+    /* Hace que la lista de productos crezca */
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #1a1a1a;
 }
 
+/* 🔥 Tarjeta de producto */
 .product-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
+    border: 2px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    width: 220px;
     text-align: center;
-    background-color: #fff;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #222, #111);
+    box-shadow: 4px 4px 10px rgba(255, 0, 0, 0.2);
+    color: #fff;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* 🔥 Imagen del producto */
 .product-image {
     width: 100%;
     height: auto;
     border-radius: 5px;
+    border: 2px solid #ff0000;
+}
+
+/* 🔥 Nombre del producto */
+.product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ff4d4d;
+}
+
+/* 🔥 Precio del producto */
+.product-price {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* 🔥 Botón de comprar o agregar al carrito */
+.product-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.product-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* 🔥 Ajuste responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .product-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 90%;
+    }
+
+    .logout-button {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .gym-title {
+        font-size: 2.5rem;
+        /* Reducir tamaño en móviles */
+    }
 }
