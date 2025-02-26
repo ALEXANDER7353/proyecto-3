@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext"; // 🔹 Importamos el carrito
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Login from "./pages/Login";
@@ -7,12 +8,17 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Orders from "./components/PedidoForm";
+import CartPage from "./pages/CartPage"; // 🔹 Nueva página del carrito
 import useAuth from "./hooks/useAuth";
 
 function App() {
   return (
     <AuthProvider>
-      <AppRoutes />
+      <CartProvider>
+        {" "}
+        {/* 🔹 Ahora toda la app tiene acceso al carrito */}
+        <AppRoutes />
+      </CartProvider>
     </AuthProvider>
   );
 }
@@ -53,6 +59,15 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <Orders />
+          </ProtectedRoute>
+        }
+      />
+      {/* 🔹 Nueva ruta para el carrito de compras */}
+      <Route
+        path="/cart"
+        element={
+          <ProtectedRoute>
+            <CartPage />
           </ProtectedRoute>
         }
       />
