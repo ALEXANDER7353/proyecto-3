@@ -7,17 +7,17 @@ const CartPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
-      <h3 className="title">Carrito de Compra 🛒</h3>
+    <div className="cart-container">
+      <h3 className="cart-title">Carrito de Compras 🛒</h3>
 
       {cart.length === 0 ? (
-        <p>Tu carrito está vacío.</p>
+        <p className="empty-cart">Tu carrito está vacío.</p>
       ) : (
         <div className="cart-items">
           {cart.map((item) => (
             <div key={item._id} className="cart-item">
               <h4>{item.name}</h4>
-              <p>Precio: ${item.price}</p>
+              <p>Precio: ${item.price.toFixed(2)}</p>
               <input
                 type="number"
                 min="1"
@@ -26,12 +26,24 @@ const CartPage = () => {
                   updateQuantity(item._id, parseInt(e.target.value))
                 }
               />
-              <button onClick={() => removeFromCart(item._id)}>Eliminar</button>
+              <button
+                className="remove-button"
+                onClick={() => removeFromCart(item._id)}
+              >
+                Eliminar
+              </button>
             </div>
           ))}
-          <h4>Total: ${getTotalPrice()}</h4>
 
-          {/* 🔹 Botón "Seguir Comprando" */}
+          {/* 🔹 Mostrar Total del Carrito */}
+          <h4 className="cart-total">Total: ${getTotalPrice().toFixed(2)}</h4>
+
+          {/* 🔹 Botón para proceder al pago */}
+          <button className="pay-button" onClick={() => navigate("/checkout")}>
+            💳 Pagar
+          </button>
+
+          {/* 🔹 Botón para seguir comprando */}
           <button
             className="continue-shopping"
             onClick={() => navigate("/dashboard")}

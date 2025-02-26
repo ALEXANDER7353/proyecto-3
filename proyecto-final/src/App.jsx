@@ -8,22 +8,20 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Orders from "./components/PedidoForm";
-import CartPage from "./pages/CartPage"; // 🔹 Nueva página del carrito
+import CartPage from "./pages/CartPage"; // 🔹 Página del carrito
+import CheckoutPage from "./pages/CheckoutPage"; // 🔹 Nueva página de pago
 import useAuth from "./hooks/useAuth";
 
 function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        {" "}
-        {/* 🔹 Ahora toda la app tiene acceso al carrito */}
         <AppRoutes />
       </CartProvider>
     </AuthProvider>
   );
 }
 
-// 🔹 Separamos la definición de rutas en un componente
 function AppRoutes() {
   const { user } = useAuth();
 
@@ -62,12 +60,23 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+
       {/* 🔹 Nueva ruta para el carrito de compras */}
       <Route
         path="/cart"
         element={
           <ProtectedRoute>
             <CartPage />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* 🔹 Nueva ruta para la página de pago */}
+      <Route
+        path="/checkout"
+        element={
+          <ProtectedRoute>
+            <CheckoutPage />
           </ProtectedRoute>
         }
       />
