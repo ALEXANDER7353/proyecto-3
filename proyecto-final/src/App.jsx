@@ -1,15 +1,15 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import { CartProvider } from "./context/CartContext"; // 🔹 Importamos el carrito
+import { CartProvider } from "./context/CartContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
-import Orders from "./components/PedidoForm";
-import CartPage from "./pages/CartPage"; // 🔹 Página del carrito
-import CheckoutPage from "./pages/CheckoutPage"; // 🔹 Nueva página de pago
+import PedidoForm from "./components/PedidoForm"; // 🔹 Importamos correctamente PedidoForm.jsx
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import useAuth from "./hooks/useAuth";
 
 function App() {
@@ -27,12 +27,10 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* 🔹 Redirige a login si no hay usuario, o a dashboard si hay usuario */}
       <Route
         path="/"
         element={<Navigate to={user ? "/dashboard" : "/login"} replace />}
       />
-
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
@@ -52,16 +50,17 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+
+      {/* 🔹 Ruta para crear o editar pedidos */}
       <Route
-        path="/orders"
+        path="/pedidos/:id?"
         element={
           <ProtectedRoute>
-            <Orders />
+            <PedidoForm />
           </ProtectedRoute>
         }
       />
 
-      {/* 🔹 Nueva ruta para el carrito de compras */}
       <Route
         path="/cart"
         element={
@@ -70,8 +69,6 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-
-      {/* 🔹 Nueva ruta para la página de pago */}
       <Route
         path="/checkout"
         element={
@@ -81,7 +78,6 @@ function AppRoutes() {
         }
       />
 
-      {/* 🔹 Redirige cualquier ruta inválida a "/" */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

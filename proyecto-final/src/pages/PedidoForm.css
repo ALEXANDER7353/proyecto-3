@@ -1,0 +1,119 @@
+.pedido-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #ff4d4d;
+    margin-bottom: 20px;
+}
+
+.loading-message {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.pedido-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(255, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.pedido-form label {
+    text-align: left;
+    font-weight: bold;
+}
+
+.pedido-form input {
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ff4d4d;
+    background: #333;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.pedido-form input:hover {
+    border-color: #ff7b7b;
+}
+
+/* 🔹 Botón "Guardar Pedido" */
+.submit-button {
+    padding: 12px;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* 🔹 Botón "Volver a Órdenes" */
+.back-button {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background-color: #008CBA;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #005F73;
+    transform: scale(1.05);
+}
+
+/* 🔹 Responsivo para móviles */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .pedido-form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .pedido-form input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .submit-button,
+    .back-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
